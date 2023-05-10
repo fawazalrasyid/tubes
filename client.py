@@ -1,9 +1,9 @@
 from socket import *
 import sys
 
-serverName = sys.argv[1]
-serverPort = sys.argv[2]
-path = sys.argv[3]
+serverName = 'localhost'
+serverPort = 8081
+path = '/index.html'
 
 clientSocket = socket(AF_INET, SOCK_STREAM)
 clientSocket.settimeout(2)
