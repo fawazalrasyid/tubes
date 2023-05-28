@@ -42,9 +42,9 @@ def start_web_server():
         response_header, response = handle_http_request(request)  # Menangani permintaan dan mendapatkan respons
 
         method, req, protocol = request.split('\n')[0].split()  # Memisahkan metode, permintaan, dan protokol dari permintaan
-        filepath = os.path.join(os.getcwd(), request.split()[1][1:])  # Menggabungkan direktori kerja saat ini dengan path file yang diminta
         print('Method   : {}'.format(method))  # Menampilkan metode permintaan
         print('Request  : {}'.format(req))  # Menampilkan permintaan
+        print('Protocol : {}'.format(protocol))  # Menampilkan protokol permintaan
         print('Respone  : {}'.format(response_header))  # Menampilkan header respons
         print("\n-------------------------------------------------\n")
 
