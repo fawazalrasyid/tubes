@@ -31,7 +31,7 @@ def start_web_server():
     server_address = ('localhost', 8080)  # Alamat dan port server
     server_socket.bind(server_address)  # Bind soket ke alamat dan port tertentu
     server_socket.listen(1)  # Listen koneksi masuk dengan antrian sebanyak 1
-    print('Web server telah dimulai di {}:{}'.format(server_address[0], server_address[1]))  # Menampilkan pesan server telah dimulai
+    print('Server is running on http://{}:{}'.format(server_address[0], server_address[1]))  # Menampilkan pesan server telah dimulai
 
     while True:
         client_socket, client_address = server_socket.accept()  # Menerima koneksi dari klien
