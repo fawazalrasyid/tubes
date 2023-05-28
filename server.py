@@ -6,16 +6,16 @@ def get_file(path):
         return file.read()  # Membaca dan mengembalikan isi file yang diberikan oleh path
 
 def handle_http_request(request):
-    method, path, _ = request.split('\n')[0].split()  # Memisahkan metode, path, dan protokol dari baris request
-    if path == "/" or path == "":
-        path = "index.html"  # Jika path adalah "/" atau string kosong, ubah path menjadi "index.html"
-
+    method, path, _ = request.split('\n')[0].split()
+    path = path[1:]
+    if path == "":
+        path = "index.html"
     if method == "GET":
-        if os.path.exists(path):
+        try:
             content = get_file(path)  # Membaca konten file jika path yang diminta ada
             response_header = "HTTP/1.1 200 OK\r\n"  # Header respons dengan status 200 OK
-            response = f"HTTP/1.1 200 OK\r\nContent-Length: {len(content)}\r\n\r\n".encode('utf-8') + content  # Respons dengan status 200 OK dan konten file
-        else:
+            response = f"HTTP/1.1 200 OK\r\n\r\n".encode('utf-8') + content  # Respons dengan status 200 OK dan konten file
+        except FileNotFoundError:
             content = get_file("404.html")  # Jika path tidak ditemukan, gunakan file "404.html"
             response_header = "HTTP/1.1 404 Not Found"  # Header respons dengan status 404 Not Found
             response = f"HTTP/1.1 404 Not Found\r\n\r\n".encode('utf-8') + content  # Respons dengan status 404 Not Found dan konten file
