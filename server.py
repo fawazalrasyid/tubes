@@ -1,7 +1,9 @@
+#Import packages
 import threading
 from socket import *
 import sys
 
+#Set server address
 serverPort = 8081
 serverSocket = socket(AF_INET, SOCK_STREAM)
 serverSocket.bind(('', serverPort))
